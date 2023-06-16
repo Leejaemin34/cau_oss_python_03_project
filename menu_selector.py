@@ -16,37 +16,40 @@ def start_process(path):
         select = int(input('type:'))
         if select == 1:                             #리스트 출력
             print_spots(spots)
-        elif select == 2:                  
+        elif select == 2:                           #필터 선택 및 적용
             print("---filter by---")
             print("[1] name")
             print("[2] city")
             print("[3] district")
             print("[4] ptype")
             print("[5] location")
+            filtered_spots = []
             select = int(input('type:'))
+            # 각 선택에 대한 필터링 적용
             if select == 1:
                 keyword = input('type name:')
-                print("not implemented yet")
-                # fill this block
+                filtered_spots = filter_by_name(spots, keyword)
+                spots = filtered_spots
             elif select == 2:
                 keyword = input('type city:')
-                print("not implemented yet")
-                # fill this block
+                filtered_spots = filter_by_city(spots, keyword)
+                spots = filtered_spots
             elif select == 3:
                 keyword = input('type district:')
-                print("not implemented yet")
-                # fill this block
+                filtered_spots = filter_by_district(spots, keyword)
+                spots = filtered_spots
             elif select == 4:
                 keyword = input('type ptype:')
-                print("not implemented yet")
-                # fill this block
+                filtered_spots = filter_by_ptype(spots, keyword)
+                spots = filtered_spots
             elif select == 5:
                 min_lat = float(input('type min lat:'))
                 max_lat = float(input('type max lat:'))
                 min_lon = float(input('type min long:'))
                 max_lon = float(input('type max long:'))
-                print("not implemented yet")
-                # fill this block
+                locations = (min_lat, max_lat, min_lon, max_lon)        #위치 튜플 생성
+                filtered_spots = filter_by_location(spots, locations)
+                spots = filtered_spots
             else:
                 print("invalid input")
         elif select == 3:

@@ -26,6 +26,27 @@ def str_list_to_class_list(string):
     return out
 # 입력된 스트링을 통해 객체 생성 및 리턴
 
+def filter_by_name(spots, name):
+    out = [spots[i] for i in range(len(spots)) if name in parking_spot.get(spots[i])]
+    return out
+# 자원명 필터링
+def filter_by_city(spots, city):
+    out = [spots[i] for i in range(len(spots)) if city in parking_spot.get(spots[i], "city")]
+    return out
+# 시도 필터링
+def filter_by_district(spots, district):
+    out = [spots[i] for i in range(len(spots)) if district in parking_spot.get(spots[i], "district")]
+    return out
+# 시군구 필터링
+def filter_by_ptype(spots, ptype):
+    out = [spots[i] for i in range(len(spots)) if ptype in parking_spot.get(spots[i], "ptype")]
+    return out
+# 주차장유형 필터링
+def filter_by_location(spots, location):
+    out = [spots[i] for i in range(len(spots)) if location[0] < float(parking_spot.get(spots[i], "latitude")) < location[1] and location[2] < float(parking_spot.get(spots[i], "longitude")) < location[3] ]
+    return out
+#위치 필터링
+
 def print_spots(spots):
     print(f"---print elements({len(spots)})---")
     for i in range(len(spots)):
