@@ -1,4 +1,12 @@
+from file_manager import read_file
+from parking_spot_manager import *
 def start_process(path):
+    spots = []
+    str_list = read_file(path)
+    for i in range(len(str_list)):
+        list = str_list_to_class_list(str_list[i])
+        spots.append(list)
+        # 파일 읽기 및 리스트에 객체 추가
     while True:
         print("---menu---")
         print("[1] print")
@@ -6,10 +14,9 @@ def start_process(path):
         print("[3] sort")
         print("[4] exit")
         select = int(input('type:'))
-        if select == 1:
-            print("not implemented yet")
-            # fill this block
-        elif select == 2:
+        if select == 1:                             #리스트 출력
+            print_spots(spots)
+        elif select == 2:                  
             print("---filter by---")
             print("[1] name")
             print("[2] city")
@@ -51,8 +58,8 @@ def start_process(path):
                 print("not implemented yet")
                 # fill this block
             else: print("invalid input")
-        elif select == 4:
-            print("not implemented yet")
-            # fill this block
+        elif select == 4:                               #반복 종료
+            print("Exit")
+            break
         else:
             print("invalid input")
